@@ -24,6 +24,11 @@ public:
 signals:
     void startGame(QVector<Player*> p);
 
+private slots:
+    void on_startButton_clicked();
+    void on_prevButton_clicked(); //for leaderboard
+    void on_nextButton_clicked(); //for leaderboard
+
 private:
     Ui::HomeWindow *ui;
     static const QString filename;
