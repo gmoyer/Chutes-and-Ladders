@@ -28,7 +28,7 @@ public:
     void updateLabels();
 
 signals:
-    void gameOver(QVector<Player*> p, bool gameWon);
+    void gameOver(QVector<Player*> p); //sends updated players vector where player who won gets win added
 
 private slots:
     void on_rollButton_clicked();
