@@ -30,6 +30,12 @@ public:
 signals:
     void gameOver(QVector<Player*> p, bool gameWon);
 
+private slots:
+    void on_rollButton_clicked();
+    void on_rerollButton_clicked();
+    void on_undoButton_clicked();
+    void on_quitButton_clicked();
+
 private:
     Ui::GameWindow *ui;
     Board* board;
