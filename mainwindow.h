@@ -20,7 +20,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void startGame(QVector<Player*> players);
-    void gameOver(QVector<Player*> players, bool gameWon);
+    void gameOver(QVector<Player*> players); //recieves updated players vector
     void newGameWindow();
     void newHomeWindow();
 
