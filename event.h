@@ -1,6 +1,11 @@
 #ifndef EVENT_H
 #define EVENT_H
 
+#include <QColor>
+#include <QGraphicsItem>
+
+class Board;
+
 class Event : public QGraphicsItem
 {
 protected:
@@ -16,6 +21,10 @@ public:
     QRectF boundingRect() const override;
     QPainterPath shape() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *item, QWidget *widget) override;
+
+    operator QString() const {
+        return QString("Start: %1, End: %2").arg(QString::number(start), QString::number(end));
+    }
 
     bool startsOn(int square) { return square == start; }
     int getEnd() { return end; }

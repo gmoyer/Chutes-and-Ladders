@@ -1,6 +1,10 @@
 #ifndef HOMEWINDOW_H
 #define HOMEWINDOW_H
 
+#include <QWidget>
+#include <fstream>
+#include <sstream>
+#include <QAbstractTableModel>
 #include "player.h"
 #include "leaderboard.h"
 
@@ -21,18 +25,20 @@ public:
 
     void updateTable();
 
-signals:
-    void startGame(QVector<Player*> p);
-
 private slots:
     void on_startButton_clicked();
-    void on_prevButton_clicked(); //for leaderboard
-    void on_nextButton_clicked(); //for leaderboard
+    void on_prevButton_clicked();
+
+    void on_nextButton_clicked();
+
+signals:
+    void startGame(QVector<Player*> p);
 
 private:
     Ui::HomeWindow *ui;
     static const QString filename;
-    QVector<Player*> players;
+    QMap<QString, Player*> playerMap;
+    LeaderBoard leaderBoard;
 };
 
 #endif // HOMEWINDOW_H

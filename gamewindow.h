@@ -1,6 +1,14 @@
 #ifndef GAMEWINDOW_H
 #define GAMEWINDOW_H
 
+#include <iostream>
+#include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QDebug>
+#include <QTime>
+#include <QValidator>
+#include <QRegularExpression>
+#include <QWidget>
 #include "board.h"
 #include "player.h"
 
@@ -22,24 +30,30 @@ public:
     void advanceTurn();
     void endTurn();
 
+    void tickTurn();
     void rollDice();
     void advanceOnBoard();
 
     void updateLabels();
 
-signals:
-    void gameOver(QVector<Player*> p); //sends updated players vector where player who won gets win added
-
 private slots:
     void on_rollButton_clicked();
+
     void on_rerollButton_clicked();
+
     void on_undoButton_clicked();
     void on_quitButton_clicked();
+
+signals:
+    void gameOver(QVector<Player*> p, bool gameWon);
 
 private:
     Ui::GameWindow *ui;
     Board* board;
-    QTimer* timer;
+    QGraphicsScene *boardScene;
+    QGraphicsScene *spawnScene;
+    QTimer* turnTimer;
+    QTimer* advanceTimer;
     bool buttonsDisabled;
 
     static const int maxPlayerCount{4};
@@ -47,8 +61,10 @@ private:
 
     QVector<Player*> players;
     Player* activePlayer;
+    int activePlayerNumber;
     int secondsLeft;
     int diceRoll;
+    bool playerMoved;
 };
 
 #endif // GAMEWINDOW_H

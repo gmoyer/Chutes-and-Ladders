@@ -1,6 +1,14 @@
 #ifndef BOARD_H
 #define BOARD_H
 
+#include <QColor>
+#include <QGraphicsItem>
+
+class Event;
+class Chute;
+class Ladder;
+class Player;
+
 class Board : public QGraphicsItem
 {
 public:
@@ -24,6 +32,8 @@ public:
     static QPoint getSquarePoint(int square);
     Event* getEvent(int square);
 private:
+    QColor color;
+    QGraphicsScene* scene;
     Event* events[squares];
 };
 

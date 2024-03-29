@@ -20,10 +20,12 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void startGame(QVector<Player*> players);
-    void gameOver(QVector<Player*> players); //recieves updated players vector
+    void gameOver(QVector<Player*> players, bool gameWon);
     void newGameWindow();
     void newHomeWindow();
 
+private slots:
+signals:
 private:
     Ui::MainWindow *ui;
     HomeWindow* homeWindow;

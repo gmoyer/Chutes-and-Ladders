@@ -1,6 +1,11 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <QColor>
+#include <QGraphicsItem>
+
+class Board;
+
 class Player : public QGraphicsItem
 {
 private:
@@ -51,8 +56,10 @@ public:
     QPainterPath shape() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *item, QWidget *widget) override;
 
+    void reset();
     void undoPreviousMove();
     double getWinPercentage() const;
+    QString getWinPercentageString() const;
 };
 
 #endif // PLAYER_H
