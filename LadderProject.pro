@@ -16,7 +16,8 @@ SOURCES += \
     leaderboard.cpp \
     main.cpp \
     mainwindow.cpp \
-    player.cpp
+    player.cpp \
+    windialog.cpp
 
 HEADERS += \
     board.h \
@@ -25,12 +26,14 @@ HEADERS += \
     homewindow.h \
     leaderboard.h \
     mainwindow.h \
-    player.h
+    player.h \
+    windialog.h
 
 FORMS += \
     gamewindow.ui \
     homewindow.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    windialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

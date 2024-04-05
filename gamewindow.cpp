@@ -6,6 +6,7 @@
 #include "board.h"
 #include "player.h"
 #include "event.h"
+#include "windialog.h"
 
 QColor GameWindow::playerColors[GameWindow::maxPlayerCount] = {
     QColor(255, 0, 0),
@@ -145,6 +146,9 @@ void GameWindow::endTurn() {
         activePlayer->addPreviousMove(activePlayer->getSquare());
     if (activePlayer->getSquare() >= Board::squares - 1) {
         activePlayer->addWin();
+        WinDialog dialog(this);
+        dialog.setWinner(activePlayer->getName());
+        dialog.exec();
         emit gameOver(players, true);
     }
     startTurn();
